@@ -140,8 +140,10 @@ class WithdrawalControler extends Controller
             
             
                Mail::to(Auth::user()->email)->send(new WithdrawOtp($code,$ref,$amt));
+
+               $url='merchant/confirm/'.$ref;
                
-               return redirect()->to('https://pay.lifegeegs.com/merchant/confirm/'.$ref)->with('success', 'Please check your email for further instructions');   
+               return redirect()->to($url)->with('success', 'Please check your email for further instructions balance');    
                 
              }
         
