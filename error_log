@@ -1,0 +1,1 @@
+[21-Dec-2021 21:26:40 UTC] PHP Fatal error:  Cannot use Auth as Auth because the name is already in use in /home/futurepl/pay.lifegeegs.com/app/Http/Controllers/Merchant/WithdrawalControler.php on line 14
