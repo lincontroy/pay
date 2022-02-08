@@ -12,6 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Withdrawal;
 use Mail;
+use Carbon\Carbon;
+use App\Jobs\MailJob;
 use App\Mail\WithdrawOtp;
 use App\Models\User;
 
@@ -48,10 +50,15 @@ class WithdrawalControler extends Controller
     public function confirmpost(Request $request){
         
         $ref=$request->ref;
+
+        $code=$request->code;
+
+
         //mark the withdrawal as confirmed
         
         $checks=Withdrawal::where('reference',$ref)
         ->where('status','!=',1)
+        ->where('code',$code)
         ->get();
         
         if(count($checks)>0){
@@ -137,13 +144,26 @@ class WithdrawalControler extends Controller
             
             
               if(($withdrawal->save()) && ($update)){
-            
-            
-               Mail::to(Auth::user()->email)->send(new WithdrawOtp($code,$ref,$amt));
 
-               $url='merchant/confirm/'.$ref;
+                $email=Auth::user()->email;
+                $name=Auth::user()->name;
+                $currency=Auth::user()->currency;
+
+                $details=array('code'=>$code,'ref'=>$ref,'amt'=>$amt,'email'=>$email);
+            
+                $mail=dispatch(new MailJob($code,$ref,$amt,$email,$name,$currency))->delay(Carbon::now()->addSeconds(2));; 
+
                
-               return redirect()->to($url)->with('success', 'Please check your email for further instructions balance');    
+
+                // $check= Mail::to($details['email'])->send(new WithdrawOtp($details['code'],$details['ref'],$details['amt']));
+
+                // $mail=new WithdrawOtp($code,$ref,$amt);   
+               
+                $url='merchant/confirm/'.$ref;
+               
+                return redirect()->to($url)->with('success', 'Please check your email for further instructions');   
+
+              
                 
              }
         

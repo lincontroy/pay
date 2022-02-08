@@ -1,7 +1,7 @@
 @component('mail::message')
-Hello {{Auth::user()->name}},
+Hello {{$name}},
 
-Please confirm your withdrawal of {{Auth::user()->currency}} {{$amt}} using the code below.
+Please confirm your withdrawal of {{$currency}} {{$amt}} using the code below.
 
 Code: {{$code}}
 
