@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 // Fraud Checker Admin
 Route::get('cron/admin/fraudcheck', 'CronController@fraudcheckAdmin')->name('admin.fraud.check');
 
-
 // Fraud Checker Merchant
 Route::get('cron/merchant/fraudcheck', 'CronController@fraudcheckMerchant')->name('merchant.fraud.check');
 

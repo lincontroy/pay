@@ -40,6 +40,17 @@ class RequestController extends Controller
                            
         return Http::accept('application/json')->post($url, $data);
     }
+
+    private function getlocationname($lat,$long){
+
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=".$lat.",".$long."&sensor=true&key=AIzaSyAP3QJBgrKkqoeR6flV30GUVSRd9B-Em6c";
+
+        $response=Http::get($url);
+
+        return $response['plus_code']['compound_code'];
+
+
+    }
     
    
     private function checkassigned($data){
@@ -315,7 +326,9 @@ class RequestController extends Controller
                 if(!$check->received_source){
                     $user_current_lat= $re['location']['latitude'];
                     $user_current_long= $re['location']['longitude'];
-                    $user_current_location_name = $re['location']['address'] ?? 'Undefined Location';
+
+                    $user_current_location_name=$this->getlocationname($user_current_lat,$user_current_long);
+                    // $user_current_location_name = $re['location']['address'] ?? 'Undefined Location';
   
                     $check->update([
                             'source_latitude' => $user_current_lat,
@@ -336,7 +349,7 @@ class RequestController extends Controller
                     if(isset($re['location']['address'])){
                         $user_destination_name = $re['location']['address'];
                     } else {
-                        $user_destination_name = "Undefined Location";
+                        $user_destination_name =$this->getlocationname($user_dest_lat,$user_dest_long);
                     }
                 
                     $check->update([
@@ -503,25 +516,7 @@ class RequestController extends Controller
             return $server_output;
                            
         }
-        
-        $requestpayload=array(
-           
-            "source" => "Lagos",
-            "source_latitude" => 2.984,
-            "source_longitude" => -9.64634,
-            "destination" => "Abuja",
-            "destination_latitude" => 4.0874,
-            "destination_longitude" => -2.7484,
-            "ride_type" => 1,
-            "ride_option" => 1,
-            "vehicle_type" => 1,
-            "payment_option" => 1
-
-            );
-        //ask the rider for his location
-        
-        // $request=json_decode($request);
-        
+    
         
         
         foreach($request as $req){
