@@ -324,6 +324,7 @@ class RequestController extends Controller
                 
                 //check if the curreent location is set
                 if(!$check->received_source){
+                    
                     $user_current_lat= $re['location']['latitude'];
                     $user_current_long= $re['location']['longitude'];
 
@@ -380,14 +381,16 @@ class RequestController extends Controller
                             break;
                             
                          case 4: 
+                         
                             $check->update(['payment_type'=>4]);
                             
                             break;
                             
                         case 5: 
+
                             $check->update(['payment_type'=>5]);
                             
-                            break;
+                            return response('', 201);
                                 
                         default:
                             $message="Invalid selection";
