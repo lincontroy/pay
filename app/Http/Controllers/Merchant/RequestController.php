@@ -390,7 +390,9 @@ class RequestController extends Controller
 
                             $check->update(['payment_type'=>5]);
                             
-                            break;
+                            $message="Please provide us with your email address";
+                            $this->sendtext($mobile,$message); 
+                            return response('', 201);
                                 
                         default:
 
