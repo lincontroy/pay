@@ -381,7 +381,7 @@ class RequestController extends Controller
                             break;
                             
                          case 4: 
-                         
+
                             $check->update(['payment_type'=>4]);
                             
                             break;
@@ -390,12 +390,14 @@ class RequestController extends Controller
 
                             $check->update(['payment_type'=>5]);
                             
-                            return response('', 201);
+                            break;
                                 
                         default:
+
                             $message="Invalid selection";
                             $this->sendtext($mobile,$message);
                             return response('', 201);
+                            
                     }
                 }
                 
