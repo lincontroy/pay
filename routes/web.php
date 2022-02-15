@@ -64,6 +64,7 @@ Route::post('/subscribe', 'FrontEndController@subscribe')->name('newsletter');
 // **---------------------------------------CRON JOB ROUTES END---------------------------------------** //
 
 Route::get('/checkout/{param}', 'Merchant\RequestController@checkoutUrl')->name('checkout');
+
 Route::get('/checkout', 'Merchant\RequestController@checkoutView')->name('checkout.view');
 Route::post('/checkout/payment/view', 'Merchant\RequestController@paymentView')->name('checkout.payment.view');
 

@@ -1521,6 +1521,76 @@ class RequestController extends Controller
         return redirect()->route('customer.checkout.view');
     }
 
+    public function information(Request $request){
+
+         $validated = $request->validate([
+            'private_key' => 'required|min:50|max:50',
+            'action' => 'required'
+        ]);
+
+
+       $private_key = $request->private_key;
+       $action= $request->action;
+        
+
+
+       $user = User::where('private_key', $private_key)->where('status', 1)->first();
+
+        if (!$user) {
+            return response()->json('Invalid Request!',401);
+            
+        }
+
+
+       switch ($action) {
+
+           case 'balance':
+              
+              $response=array('username'=>$user->name,'currency'=>$user->currency,'balance'=>$user->balance);
+
+              return response()->json($response,200);
+
+            case 'statement':
+
+
+             $data=Payment::where('user_id',$user->id)->get();
+              
+              $response=array('username'=>$user->name,'transactions'=>$data);
+
+              return response()->json($response,200);
+           
+           default:
+               # code...
+
+             return response()->json("Invalid action",501);
+       }
+    }
+
+    public function checkbalance(Request $request){
+
+         $validated = $request->validate([
+            'private_key' => 'required|min:50|max:50',
+            'action' => 'required'
+        ]);
+
+
+       $private_key = $request->private_key;
+        
+
+
+       $user = User::where('private_key', $private_key)->where('status', 1)->first();
+
+        if (!$user) {
+            return response()->json('Invalid Request!',401);
+            
+        }else{
+
+            $response=array('username'=>$user->name,'currency'=>$user->currency,'balance'=>$user->balance);
+
+            return response()->json($response,200);
+        }
+    }
+
     public function apiCheckoutView()
     {
         $requestData = Session::has('api_request') ? json_decode(json_encode(Session::get('api_request')), false) : '';

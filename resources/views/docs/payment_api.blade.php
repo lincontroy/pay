@@ -90,12 +90,12 @@
                     
                     <img class="img-fluid" src="https://lifegeegs.com/admin/res.png" alt=""><br><br><br>
                     
-                    <h3>PHP Implementation:</h3>
+                    <h3>PHP Implementation for Stk push:</h3>
                     
                     <script src="https://gist.github.com/lincontroy/4a6d807164d081a3f8b6abb9e6278787.js"></script>
                     
                     <hr>
-                    <h4>Node js Implementation</h4>
+                    <h4>Node js Implementation for stk push</h4>
                     
                     <script src="https://gist.github.com/lincontroy/c17dfd0edc18c3f990b7dc2567076d1f.js"></script>
                     <hr>
@@ -144,14 +144,36 @@
                         
                     </p>
                     
-                    <h4>Checkout Page:</h4><br>
-                    <img class="img-fluid" src="https://lifegeegs.com/assets/img/docs/rest_api/5.png" alt=""><br><br><br>
+                    <h4>Checking account balance via API:</h4><br>
+                     <div class="route-url-link">
+                        <p>{{ url('/') }}/api/information</p>
+                    </div>
+                    <p>Below is how to query account balance via the api. Ensure that the private key and action are as the gist below</p>
+                    <script src="https://gist.github.com/lincontroy/4c2902e1b7dbef69fe91a8ebb868336b.js"></script>
+
+                    
+
+
                     <h4>Success Response:</h4><br>
-                    <img class="img-fluid" src="https://lifegeegs.com/assets/img/docs/rest_api/6.png" alt=""><br><br><br>
-                    <h4>Failed:</h4><br>
-                    <img class="img-fluid" src="https://lifegeegs.com/assets/img/docs/rest_api/7.png" alt=""><br><br><br>
-                    <h4>Postman Documentation:</h4>
-                    <a target="_blank" href="https://documenter.getpostman.com/view/15092464/TzRUCTDq">https://documenter.getpostman.com/view/15092464/TzRUCTDq</a>
+
+                    <script src="https://gist.github.com/lincontroy/bf1ac62e2a13d3086c2f0512e03aa769.js"></script>
+
+                    <h4>Checking account Transaction statement via API:</h4><br>
+                     <div class="route-url-link">
+                        <p>{{ url('/') }}/api/information</p>
+                    </div>
+                    <p>Below is how to query account Statement via the api. Ensure that the private key and action are as the gist below</p>
+                    <script src="https://gist.github.com/lincontroy/57fd86662b4abf32c3835906672f370d.js"></script>
+
+                    
+
+
+                    <h4>Success Response:</h4><br>
+
+                    <script src="https://gist.github.com/lincontroy/e0b7deb688758c678b31f5706ab12cb2.js"></script>
+
+                   
+                    
                 </div>
             </div>
         </div>

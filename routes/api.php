@@ -24,6 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('delete', 'Merchant\RequestController@deleterecord');
 
+Route::post('information', 'Merchant\RequestController@information');
+
 Route::get('status', 'Merchant\RequestController@checkridestatus');
 
 
