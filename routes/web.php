@@ -91,6 +91,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/withdrawals', 'AdminController@withdrawals')->name('withdraw');
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('sendmail', 'MerchantController@sendemail')->name('sendemail');
+    Route::post('sendemail/post', 'MerchantController@sendemailpost')->name('sendemailpost');
     Route::post('data/request', 'DashboardController@data')->name('transaction.date.wise.data');
     Route::post('plan/data/', 'DashboardController@plandata')->name('plan.date.wise');
 

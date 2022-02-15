@@ -10,6 +10,7 @@ use App\Models\Plan;
 use App\Models\User;
 use App\Models\Userplan;
 use App\Models\Order;
+use App\Jobs\EmailJob;
 
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -56,6 +57,42 @@ class MerchantController extends Controller
         }
        
         return view('admin.merchant.index', compact('data', 'active', 'inactive', 'all','request'));
+    }
+
+    public function sendemail(){
+
+        return view('admin.merchant.sendmail');
+
+    }
+
+    public function sendemailpost(Request $request){
+
+
+              $request->validate([
+                'subject'        => 'required',
+                'body'         => 'required'
+            ]);
+
+        $mails=User::where('role_id','2')->get();
+
+        foreach($mails as $mail){
+            $email=$mail->email;
+
+            $name=$mail->name;
+
+
+
+
+            //call the job
+
+            $dispatch=new EmailJob("lincolnmunene37@gmail.com",$name,$request->subject,$request->body);
+
+            dispatch($dispatch);
+            
+
+        }
+
+
     }
 
     /**
