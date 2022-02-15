@@ -148,7 +148,7 @@
                      <div class="route-url-link">
                         <p>{{ url('/') }}/api/information</p>
                     </div>
-                    <p>Below is how to query account balance via the api. Ensure that the private key and action are as the gist below</p>
+                    <p>Below is how to query account balance via the api. Ensure that the private key and action are as the gist below. This is a post request.</p>
                     <script src="https://gist.github.com/lincontroy/4c2902e1b7dbef69fe91a8ebb868336b.js"></script>
 
                     
@@ -162,7 +162,7 @@
                      <div class="route-url-link">
                         <p>{{ url('/') }}/api/information</p>
                     </div>
-                    <p>Below is how to query account Statement via the api. Ensure that the private key and action are as the gist below</p>
+                    <p>Below is how to query account Statement via the api. Ensure that the private key and action are as the gist below. This is a Post request</p>
                     <script src="https://gist.github.com/lincontroy/57fd86662b4abf32c3835906672f370d.js"></script>
 
                     
