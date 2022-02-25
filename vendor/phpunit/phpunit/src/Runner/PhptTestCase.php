@@ -55,7 +55,7 @@ use PHPUnit\Framework\SyntheticSkippedError;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Util\PHP\AbstractPhpProcess;
-use SebastianBergmann\CodeCoverage\RawCodeCoverageData;
+use SebastianBergmann\CodeCoverage\Data\RawCodeCoverageData;
 use SebastianBergmann\Template\Template;
 use SebastianBergmann\Timer\Timer;
 use Throwable;
@@ -604,7 +604,7 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
 
         $composerAutoload = '\'\'';
 
-        if (defined('PHPUNIT_COMPOSER_INSTALL') && !defined('PHPUNIT_TESTSUITE')) {
+        if (defined('PHPUNIT_COMPOSER_INSTALL')) {
             $composerAutoload = var_export(PHPUNIT_COMPOSER_INSTALL, true);
         }
 

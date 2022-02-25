@@ -7,3 +7,4 @@ Hi {{$name}},
 
 
 @endcomponent
+sendmail

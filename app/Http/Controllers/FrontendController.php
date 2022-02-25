@@ -62,8 +62,8 @@ class FrontendController extends Controller
 
             return view('frontend.index', compact('heroSectionData', 'sections', 'quickStart', 'getawaySection', 'blogs', 'plans'));
         } catch (\Exception $e) {
-            return redirect()->route('install');
-            // return $e;
+            // return redirect()->route('install');
+            return $e;
         }
 
        

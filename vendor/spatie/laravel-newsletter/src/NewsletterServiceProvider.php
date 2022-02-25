@@ -36,5 +36,9 @@ class NewsletterServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(Newsletter::class, 'newsletter');
+
+        $this->commands([
+            NewsletterPermissions::class,
+        ]);
     }
 }

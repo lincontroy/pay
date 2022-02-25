@@ -26,8 +26,8 @@ use function xdebug_get_code_coverage;
 use function xdebug_set_filter;
 use function xdebug_start_code_coverage;
 use function xdebug_stop_code_coverage;
+use SebastianBergmann\CodeCoverage\Data\RawCodeCoverageData;
 use SebastianBergmann\CodeCoverage\Filter;
-use SebastianBergmann\CodeCoverage\RawCodeCoverageData;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for phpunit/php-code-coverage
@@ -35,9 +35,9 @@ use SebastianBergmann\CodeCoverage\RawCodeCoverageData;
 final class Xdebug3Driver extends Driver
 {
     /**
-     * @throws XdebugNotAvailableException
      * @throws WrongXdebugVersionException
      * @throws Xdebug3NotEnabledException
+     * @throws XdebugNotAvailableException
      */
     public function __construct(Filter $filter)
     {
@@ -56,7 +56,7 @@ final class Xdebug3Driver extends Driver
 
         $mode = getenv('XDEBUG_MODE');
 
-        if ($mode === false) {
+        if ($mode === false || $mode === '') {
             $mode = ini_get('xdebug.mode');
         }
 

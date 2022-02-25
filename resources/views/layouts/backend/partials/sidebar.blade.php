@@ -261,6 +261,21 @@
                         </li>
                     </ul>
                 </li>
+
+                 <li class="menu-header">{{ __('Invoices') }}</li>
+                <li class="{{ Request::is('merchant/request*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-share-square"></i>
+                        <span>{{ __('Invoice') }}</span></a>
+                    <ul class="dropdown-menu">
+                        @if(getplandata('menual_req') == 1)
+                        <li><a class="nav-link" href="{{ url('merchant/invoice/create') }}">{{ __('Create invoice') }}</a>
+                        </li>
+                        @endif
+                        <li><a class="nav-link"
+                                href="{{ url('merchant/invoices') }}">{{ __('My Invoices') }}</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="menu-header">{{ __('Form Generator') }}</li>
                 <li class="nav-item dropdown {{ Request::is('merchant/form*') ? 'show active' : '' }}">
                     <a href="{{ route('merchant.form.generate') }}" class="nav-link"><i class="fas fa-plug"></i>

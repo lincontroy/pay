@@ -191,6 +191,9 @@ Route::group(['prefix' => 'merchant', 'as' => 'merchant.', 'namespace' => 'Merch
     Route::get('withdraw', 'WithdrawalControler@index')->name('withdraw');
     
     Route::get('confirm/{ref}', 'WithdrawalControler@confirm')->name('confirm');
+
+    Route::get('invoice/create', 'InvoiceController@showform')->name('showform');
+    Route::post('invoice/post', 'InvoiceController@postinvoice')->name('postinvoice');
     
     Route::post('withdraw/confirm', 'WithdrawalControler@confirmpost')->name('confirmpost');
     Route::get('withdrawals', 'WithdrawalControler@withdrawals')->name('withdrawals');
