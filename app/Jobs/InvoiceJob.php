@@ -10,6 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\InvoiceModel;
 use App\Mail\InvoiceMail;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 use Mail;
 use Illuminate\Queue\SerializesModels;
 
@@ -53,10 +56,33 @@ class InvoiceJob implements ShouldQueue
 
         if($InvoiceModel->save()){
 
+            $dompdf = new Dompdf();
+
+            $options = new Options();
+            
+            $options->set('defaultFont', 'Courier');
+
+            $dompdf = new Dompdf($options);
+
+            $dompdf->loadHtml('hello world');
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper('A4', 'landscape');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            $dompdf->stream();
+
+            //create the pdf
+
+
+
             //send this document to the cmail
 
-            $mail=new InvoiceMail($this->customer_email,$this->refcode,$this->currency,$this->amount,$this->description);
-            Mail::to($this->customer_email)->send($mail);
+            // $mail=new InvoiceMail($this->customer_email,$this->refcode,$this->currency,$this->amount,$this->description);
+            // Mail::to($this->customer_email)->send($mail);
 
         }
      

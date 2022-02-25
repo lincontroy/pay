@@ -242,6 +242,8 @@ return [
         'JsonLdMulti'  => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         'SEO'          => Artesaos\SEOTools\Facades\SEOTools::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
         // ...
 

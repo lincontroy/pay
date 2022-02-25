@@ -17,8 +17,7 @@ class CreateInvoiceModelsTable extends Migration
             $table->id();
             
             $table->integer('user_id')->unsigned();
-            $table->index('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+         
             $table->string('invoice_code');
             $table->string('c_email');
             $table->string('currency');
@@ -26,6 +25,8 @@ class CreateInvoiceModelsTable extends Migration
             $table->string('description');
             $table->timestamps();
         });
+  
+
     }
 
     /**
@@ -36,5 +37,9 @@ class CreateInvoiceModelsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('invoice_models');
+
+  
+       
+       
     }
 }

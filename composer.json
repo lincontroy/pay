@@ -9,6 +9,7 @@
         "anhskohbo/no-captcha": "^3.3",
         "artesaos/seotools": "^0.20.0",
         "barryvdh/laravel-dompdf": "^1.0",
+        "barryvdh/laravel-snappy": "^1.0",
         "doctrine/inflector": "1.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
